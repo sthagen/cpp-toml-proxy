@@ -25,7 +25,10 @@ TEST_SUITE ("Example derived tests.") {
          */
         try {
             toml::table tbl = toml::parse(configuration);
-            REQUIRE(tbl);
+            std::ostringstream os;
+            os << tbl;
+            CHECK(os.str());
+            REQUIRE(os.str().find("[library]") != std::string.npos);
         }
         catch (const toml::parse_error& err) {
             FAIL("Parsing failed:", err);
