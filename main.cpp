@@ -26,7 +26,7 @@ TEST_SUITE ("Example derived tests.") {
         toml::table tbl = toml::parse(configuration);
         std::ostringstream os;
         os << tbl;
-        CHECK(os.str());
+        CHECK(!os.str().empty());
         REQUIRE(os.str().find("[library]") != std::string::npos);
     }
 }
