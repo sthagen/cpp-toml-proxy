@@ -27,6 +27,6 @@ TEST_SUITE ("Example derived tests.") {
         std::ostringstream os;
         os << tbl;
         CHECK(os.str());
-        REQUIRE(os.str().find("[library]") != std::string.npos);
+        REQUIRE(os.str().find("[library]") != std::string::npos);
     }
 }
