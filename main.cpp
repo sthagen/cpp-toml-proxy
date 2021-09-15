@@ -18,20 +18,15 @@ static constexpr std::string_view configuration = R"(
 
 
 TEST_SUITE ("Example derived tests.") {
-    TEST_CASE ("No error in parsing the example report.") {
+    TEST_CASE ("No error in parsing the configuration fixture.") {
         /* Example snippet:
          *
          * toml::table tbl = toml::parse(configuration);
          */
-        try {
-            toml::table tbl = toml::parse(configuration);
-            std::ostringstream os;
-            os << tbl;
-            CHECK(os.str());
-            REQUIRE(os.str().find("[library]") != std::string.npos);
-        }
-        catch (const toml::parse_error& err) {
-            FAIL("Parsing failed:", err);
-        }
+        toml::table tbl = toml::parse(configuration);
+        std::ostringstream os;
+        os << tbl;
+        CHECK(os.str());
+        REQUIRE(os.str().find("[library]") != std::string.npos);
     }
 }
