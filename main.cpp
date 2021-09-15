@@ -18,7 +18,7 @@ static constexpr std::string_view configuration = R"(
 
 
 TEST_SUITE ("Example derived tests.") {
-    TEST_CASE ("No error in parsing the configuration fixture.") {
+    TEST_CASE ("No error in parsing the configuration fixture with round trip.") {
         /* Example snippet:
          *
          * toml::table tbl = toml::parse(configuration);
@@ -26,10 +26,10 @@ TEST_SUITE ("Example derived tests.") {
         toml::table tbl = toml::parse(configuration);
         std::ostringstream os;
         os << tbl;
-        SUBCASE("The configuration repersentation is not empty.") {
+        SUBCASE("The configuration repersentation is not empty in round trip.") {
             REQUIRE(!os.str().empty());
         }
-        SUBCASE("The section is present.") {
+        SUBCASE("The section is present in round trip.") {
             REQUIRE(os.str().find("[library]") != std::string::npos);
         }
     }
