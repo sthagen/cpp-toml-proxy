@@ -35,5 +35,11 @@ TEST_SUITE ("Example derived tests.") {
         SUBCASE("The array values of the authors key are not lost in round trip.") {
             REQUIRE(os.str().find("authors = [ 'Mark' ]") != std::string::npos);
         }
+        SUBCASE("The cpp key and value are kept in round trip.") {
+            REQUIRE(os.str().find("cpp = 17") != std::string::npos);
+        }
+        SUBCASE("The name value keeps the quoting in round trip.") {
+            REQUIRE(os.str().find("name = 'toml++'") != std::string::npos);
+        }
     }
 }
