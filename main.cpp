@@ -26,7 +26,11 @@ TEST_SUITE ("Example derived tests.") {
         toml::table tbl = toml::parse(configuration);
         std::ostringstream os;
         os << tbl;
-        CHECK(!os.str().empty());
-        REQUIRE(os.str().find("[library]") != std::string::npos);
+        SUBCASE("The configuration repersentation is not empty.") {
+            REQUIRE(!os.str().empty());
+        }
+        SUBCASE("The section is present.") {
+            REQUIRE(os.str().find("[library]") != std::string::npos);
+        }
     }
 }
