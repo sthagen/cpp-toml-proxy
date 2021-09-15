@@ -32,5 +32,8 @@ TEST_SUITE ("Example derived tests.") {
         SUBCASE("The section is present in round trip.") {
             REQUIRE(os.str().find("[library]") != std::string::npos);
         }
+        SUBCASE("The array values of the authors key are not lost in round trip.") {
+            REQUIRE(os.str().find("authors = [ 'Mark' ]") != std::string::npos);
+        }
     }
 }
